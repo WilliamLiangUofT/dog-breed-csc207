@@ -23,9 +23,13 @@ public class Main {
      * @return the number of sub breeds. Zero should be returned if there are no sub breeds
      * returned by the fetcher
      */
-    public static int getNumberOfSubBreeds(String breed, BreedFetcher breedFetcher) throws BreedFetcher.BreedNotFoundException {
+    public static int getNumberOfSubBreeds(String breed, BreedFetcher breedFetcher) {
         // TODO Task 3 implement this code so that it is entirely consistent with its provided documentation.
-        List<String> listOfSubBreeds = breedFetcher.getSubBreeds(breed);
-        return listOfSubBreeds.size();
+        try {
+            List<String> listOfSubBreeds = breedFetcher.getSubBreeds(breed);
+            return listOfSubBreeds.size();
+        } catch (BreedFetcher.BreedNotFoundException e) {
+            return 0;
+        }
     }
 }
